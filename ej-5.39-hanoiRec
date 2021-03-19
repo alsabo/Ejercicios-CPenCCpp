@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+
+void moveStack(int stackSize, int from, int to, int temp);
+
+int main()
+{
+	moveStack(24, 1, 3, 2);
+
+	return 0;
+}
+
+void moveStack(int stackSize, int from, int to, int temp)
+{
+	if (stackSize == 1)
+		printf("%d → %d\n", from, to);
+	else	{
+		moveStack(stackSize - 1	, from, temp, to);
+		moveStack(1		, from, to, temp);
+		moveStack(stackSize - 1	, temp, to, from);
+	}
+}
